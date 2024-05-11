@@ -7,6 +7,12 @@ function ProductView({ products }) {
 
   // TODO: Replace with state variable
   const [sideOpen, setSideOpen] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product); // Update selected product state when a product is clicked
+    setSideOpen(true); // Ensure the side panel is open when a product is selected
+  };
 
   return (
     <div className="product-view">
@@ -17,7 +23,8 @@ function ProductView({ products }) {
             <ProductListItem
               key={item.id}
               product={item}
-              onClick={() => console.log('SELECT PRODUCT', item)}
+              isSelected={item.id === (selectedProduct ? selectedProduct.id : null)} // Check if current item is selected
+              onClick={() => handleProductClick(item)}
             />
           )}
         </div>
@@ -29,7 +36,7 @@ function ProductView({ products }) {
             {sideOpen ? '>' : '<'}
           </div>
         </div>
-        <ProductDetails visible={sideOpen} />
+        <ProductDetails product={selectedProduct} visible={sideOpen} />
       </div>
     </div>
   );
