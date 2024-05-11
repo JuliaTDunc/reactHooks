@@ -47,7 +47,7 @@ function ProductView({ products }) {
       <div className="product-side-panel">
         <div className="product-side-panel-toggle-wrapper">
           <div className="product-side-panel-toggle"
-               onClick={() => setSideOpen(!sideOpen)}>
+            onClick={() => setSideOpen(!sideOpen)}>
             {sideOpen ? '>' : '<'}
           </div>
         </div>
