@@ -11,8 +11,19 @@ function ProductView({ products }) {
 
   const handleProductClick = (product) => {
     setSelectedProduct(product); // Update selected product state when a product is clicked
-    setSideOpen(true); // Ensure the side panel is open when a product is selected
   };
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setSideOpen(true)
+    }
+  }, [selectedProduct]);
+
+  useEffect(() => {
+    if (!sideOpen) {
+      setSelectedProduct();
+    }
+  }, [sideOpen])
 
   return (
     <div className="product-view">
