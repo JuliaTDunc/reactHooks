@@ -14,17 +14,22 @@ function ProductView({ products }) {
   };
 
   useEffect(() => {
+    console.log(`selectedProduct CHANGED TO`, selectedProduct)
     if (selectedProduct) {
-      setSideOpen(true)
+      setSideOpen(true);
+      localStorage.setItem('sideOpen', sideOpen)
     }
   }, [selectedProduct]);
 
   useEffect(() => {
+    console.log(`sideOpen CHANGED TO`, sideOpen)
     if (!sideOpen) {
       setSelectedProduct();
+      localStorage.setItem('sideOpen', sideOpen)
     }
   }, [sideOpen])
 
+  console.log('CONSOLE LOG OUTPUT')
   return (
     <div className="product-view">
       <div className="product-main-area">
